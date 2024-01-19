@@ -3,11 +3,11 @@ const router = express.Router()
 const authController = require('../controllers/auth')
 
 // creat user / sign uP
-router.post('/signup', authController.signUp)
+router.post('/signup')
 
 // sign in / Log in
 
-router.post('/signin',authController.signIn)
+router.post('/signin')
 
 // google authentication
 
