@@ -1,11 +1,12 @@
+const mongoose = require('mongoose')
 const express = require('express')
 const router = express.Router()
-const authController = require('../controllers/auth.js') 
 const userController = require('../controllers/User.js')
-const verifyToken = require('../middleware/verifyToken.js').verifyToken
+
 
 // Update User
-router.put('/:id',verifyToken,userController.update)
+
+router.put('/:id',userController.update)
 
 
 // Delete User
