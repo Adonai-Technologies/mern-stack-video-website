@@ -4,7 +4,7 @@ const authController = require('../controllers/auth.js')
 
 
 // create user || signUp
-router.post('/signup',  authController.signUp)
+router.post('/signup',authController.signUp)
 // signIn
 
 router.post('/signIn',authController.signIn)
