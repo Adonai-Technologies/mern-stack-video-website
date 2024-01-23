@@ -36,7 +36,8 @@ deleteUser: async (req, res, next) => {
 
   getUser: async (req, res, next) => {
      try {
-      
+      const user = await User.findById(req.params._id)
+      res.status(200).json(user)
      } catch (error) {
       next()
      }
@@ -44,20 +45,36 @@ deleteUser: async (req, res, next) => {
 
   subscribe: async (req, res, next) => {
     try {
-      
-    } catch (error) {
+      await User.findById(req.User._id,{
+         $push:{subcribedUsers:req.params._id},
+         
+        })
+         await User.findByIdAndUpdate(req.params._id,{
+             $inc:{subcribers:1}
+         })
+         res.status(200).json('Subcribtion successfull')
+        } catch (error) {
      next()
     }
   },
 
   unsubscribe:async (req, res, next) => {
     try {
-      
+      await User.findById(req.User._id,{
+        $pull:{subcribedUsers:req.params._id},
+        
+       })
+        await User.findByIdAndUpdate(req.params._id,{
+            $inc:{subcribers: -1}
+        })
+        res.status(200).json('UnSubcribtion successfull')
+    
     } catch (error) {
      next()
     }
   },
 
+ 
   like: async(req, res, next) => {
     try {
       
@@ -66,6 +83,8 @@ deleteUser: async (req, res, next) => {
     }
   },
 
+  
+  
   dislike:async (req, res, next) => {
     try {
       
