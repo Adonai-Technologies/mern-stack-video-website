@@ -45,7 +45,7 @@ deleteUser: async (req, res, next) => {
 
   subscribe: async (req, res, next) => {
     try {
-      await User.findById(req.User._id,{
+      await User.findByIdAndUpdate(req.User._id,{
          $push:{subcribedUsers:req.params._id},
          
         })
@@ -60,7 +60,7 @@ deleteUser: async (req, res, next) => {
 
   unsubscribe:async (req, res, next) => {
     try {
-      await User.findById(req.User._id,{
+      await User.findByIdAndUpdate(req.User._id,{
         $pull:{subcribedUsers:req.params._id},
         
        })

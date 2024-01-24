@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth.js') 
-const videoController = require('../controllers/video.js')
+const videoController = require('../controllers/Video.js')
 
 
 
@@ -9,26 +9,19 @@ const videoController = require('../controllers/video.js')
 
 router.post('/',videoController.addVideo)
 
-
-
 router.put('/:id',videoController. updateVideo)
-
-
 
 router.delete('/:id',videoController.deleteVideo)
 
-
-
 router.get('/find/:id',videoController.getVideo)
 
+router.put('/view/:id',videoController.addView)
 
+router.get('/trend',videoController. trend)
 
-router.post('/',videoController.likeVideo)
+router.get('/random',videoController.random)
 
-
-
-router.post('/',videoController.dislikeVideo)
-
+router.put('/sub',videoController.sub)
 
 
 
