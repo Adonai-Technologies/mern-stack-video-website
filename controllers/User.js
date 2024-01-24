@@ -5,12 +5,9 @@ module.exports = {
   update: async (req, res, next) => {
     if (req.params._id === req.user) {
       try {
-        const updateUser = await User.findByIdAndUpdate(
-          req.params.id,
-          {
-            $set: req.body
-          },
-          { new: true }
+        const updateUser = await User.findByIdAndUpdate(req.params.id,{
+            $set: req.body},{ new: true }
+           
         );
         res.status(200).json(updateUser);
       } catch (err) {
@@ -21,11 +18,10 @@ module.exports = {
 
   
 deleteUser: async (req, res, next) => {
-    if (req.params._id === req.user) {
+    if (req.params_id === req.user_id) {
+      console.log(req.user)
       try {
-        await User.findByIdAndDelete(
-          req.user._id
-          );
+        await User.findByIdAndDelete(req.user_id);
           
           res.status(200).json("User Has been deleted")
           } catch (err) {

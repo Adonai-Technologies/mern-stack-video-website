@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 
 module.exports = {
   addVideo: async (req, res, next) => {
-    const newVideo = await new Video({ userId: req.user, ...req.body});   
+       
     try {
-        
+      const newVideo = await new Video({ userId: req.user, ...req.body});
        res.status(200).json(newVideo).save();
     } catch (error) {
       next(Error(406,'something went wrong'));
@@ -20,9 +20,7 @@ module.exports = {
       if (req.user._d === video.userId) {
         const updatedVideo = await Video.findByIdAndUpdate(
           req.params._id,
-          {
-            $set: req.body
-          },
+          {  $set: req.body },
           { new: true }
         );
         res.status(200).json(updatedVideo);

@@ -8,11 +8,6 @@ const userController = require('../controllers/User.js')
 
 router.put('/:id',userController.update)
 
-
-// Delete User
-router.delete('/:id',userController.deleteUser)
-
-
 // get a User
 router.get('/find/:id',userController.getUser)
 
@@ -29,7 +24,8 @@ router.put('/like/:videoId',userController.like)
 
 router.put('/dislike/:videoId',userController.dislike)
 
-
+// Delete User
+router.delete('/:id',userController.deleteUser)
 
 
 module.exports = router
