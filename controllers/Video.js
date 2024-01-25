@@ -4,10 +4,10 @@ const mongoose = require('mongoose')
 
 module.exports = {
   addVideo: async (req, res, next) => {
-       
-    try {
-      const newVideo = await new Video({ userId: req.user, ...req.body});
-       res.status(200).json(newVideo).save();
+     try {
+      const newVideo = await new Video(req.user._id, ...req.body);
+      const saveVideo = newVideo.save()
+       res.status(200).json(saveVideo);
     } catch (error) {
       next(Error(406,'something went wrong'));
     }
