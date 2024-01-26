@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const VideoSchema = new mongoose.Schema({
-    
     userId: {
       type: String,
       required: true
@@ -41,4 +40,4 @@ const VideoSchema = new mongoose.Schema({
   })
   {timestamps: true}
   
-  module.exports = mongoose.model('Video', VideoSchema)
+  module.exports = mongoose.model('Video',VideoSchema)

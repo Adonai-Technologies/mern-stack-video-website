@@ -23,14 +23,14 @@ app.use(express.json())
 
 
 app.use('/auth',authRoutes)
-app.use('/users', userRoutes )
-app.use('/comment', commentRoutes )
-app.use('/videos', videoRoutes )
+app.use('/users',userRoutes )
+app.use('/comments',commentRoutes )
+app.use('/videos',videoRoutes )
 
 
 app.use((err,req,res,next) =>{
       const status = err.status || 500;
-      const message = err.massage||"Somthing Went Wrong";
+      const message = err.massage ||"Internal Server Error";
       return res.status(status).json({
         success:false,
         status,

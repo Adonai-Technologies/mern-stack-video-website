@@ -11,21 +11,20 @@ module.exports = {
         );
         res.status(200).json(updateUser);
       } catch (err) {
-        return next(Error(406, "You can update only Your account"));
+        return next(Error(404, "You can update only Your account"));
       }
     }
   },
 
   
 deleteUser: async (req, res, next) => {
-    if (req.params_id === req.user_id) {
-      console.log(req.user)
+    if (req.params_id === req.user) {
       try {
-        await User.findByIdAndDelete(req.user_id);
+       const deleteUser = await User.findByIdAndDelete(req.params.id);
           
           res.status(200).json("User Has been deleted")
           } catch (err) {
-        return next(Error(406, "You can delete only Your account"));
+        return next(Error(405,"You can delete only Your account"));
       }
     }
   },
@@ -41,12 +40,12 @@ deleteUser: async (req, res, next) => {
 
   subscribe: async (req, res, next) => {
     try {
-      await User.findByIdAndUpdate(req.User._id,{
+      await User.findByIdAndUpdate(req.user,{
          $push:{subcribedUsers:req.params._id},
          
         })
          await User.findByIdAndUpdate(req.params._id,{
-             $inc:{subcribers:1}
+             $inc:{subcribers: 1}
          })
          res.status(200).json('Subcribtion successfull')
         } catch (error) {
@@ -56,7 +55,7 @@ deleteUser: async (req, res, next) => {
 
   unsubscribe:async (req, res, next) => {
     try {
-      await User.findByIdAndUpdate(req.User._id,{
+      await User.findByIdAndUpdate(req.user,{
         $pull:{subcribedUsers:req.params._id},
         
        })

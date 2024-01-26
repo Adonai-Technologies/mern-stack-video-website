@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/User.js')
-
+const jwt = require('../middleware/verifyToken.js')
 
 // Update User
 
-router.put('/:id',userController.update)
+router.put('/:id',userController.update).jwt
 
 // get a User
 router.get('/find/:id',userController.getUser)

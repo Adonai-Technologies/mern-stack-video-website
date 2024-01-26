@@ -4,12 +4,15 @@ const mongoose = require('mongoose')
 
 module.exports = {
   addVideo: async (req, res, next) => {
-     try {
-      const newVideo = await new Video(req.user._id, ...req.body);
-      const saveVideo = newVideo.save()
-       res.status(200).json(saveVideo);
-    } catch (error) {
-      next(Error(406,'something went wrong'));
+    try {
+      // const salt = bcrypt.genSaltSync(10);
+      // const hash = bcrypt.hashSync(req.body.password, salt);
+      const newVideo = new Video({ ...req.body});
+      
+      await newVideo.save();
+      res.status(200).send("video has been created");
+    } catch (err) {
+      next(Error);
     }
   },
 
@@ -17,7 +20,7 @@ module.exports = {
     try {
       const video = await Video.findById(req.params._id);
       if (!video) return next(Error(404, "Video not found"));
-      if (req.user._d === video.userId) {
+      if (req.user === video.userId) {
         const updatedVideo = await Video.findByIdAndUpdate(
           req.params._id,
           {  $set: req.body },
@@ -36,7 +39,7 @@ module.exports = {
     try {
       const video = await Video.findById(req.params._id);
       if (!video) return next(Error(404, "Video not found"));
-      if (req.user._d === video.userId) {
+      if (req.user === video.userId) {
         await Video.findByIdAndDelete(req.params._id);
         res.status(200).json("The video has been deleted");
       } else {
@@ -87,7 +90,7 @@ module.exports = {
 
   sub: async (req, res, next) => {
     try {
-      const user = await User.findById(req.user._id);
+      const user = await User.findById(req.user);
       const subscribedChannels = user.subcribedUsers;
 
       const list = await Promise.all(
@@ -101,17 +104,17 @@ module.exports = {
     }
   },
 
-  likeVideo: async (req, res, next) => {
-    try {
-    } catch (error) {
-      next(err);
-    }
-  },
+  // likeVideo: async (req, res, next) => {
+  //   try {
+  //   } catch (error) {
+  //     next(err);
+  //   }
+  // },
 
-  dislikeVideo: async (req, res, next) => {
-    try {
-    } catch (error) {
-      next(err);
-    }
-  }
+  // dislikeVideo: async (req, res, next) => {
+  //   try {
+  //   } catch (error) {
+  //     next(err);
+  //   }
+  // }
 };
