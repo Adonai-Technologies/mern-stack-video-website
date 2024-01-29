@@ -7,7 +7,7 @@ const commentRoutes = require('./routes/comments.js')
 const videoRoutes = require('./routes/videos.js')
 const authRoutes = require('./middleware/auth.js')
 const cookie_parser = require('cookie-parser')
-
+const verifyTokens = require('./middleware/verifyToken')
 
 
 

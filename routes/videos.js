@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const authController = require('../controllers/auth.js') 
 const videoController = require('../controllers/Video.js')
-const jwt = require('../middleware/verifyToken.js')
+const authenticateUser = require('../middleware/verifyToken.js').verifyToken
 
 
 
 // create a video
 
-router.post('/',videoController.addVideo)
+router.post('/',videoController.addVideo,authenticateUser)
 
 router.put('/:id',videoController.updateVideo)
 

@@ -4,16 +4,13 @@ const mongoose = require('mongoose')
 
 module.exports = {
   addVideo: async (req, res, next) => {
-    try {
-      // const salt = bcrypt.genSaltSync(10);
-      // const hash = bcrypt.hashSync(req.body.password, salt);
-      const newVideo = new Video({ ...req.body});
-      
-      await newVideo.save();
-      res.status(200).send("video has been created");
-    } catch (err) {
-      next(Error);
-    }
+        const newVideo = new Video({ userId: req.user, ...req.body })
+        try {
+            const saveVideo = await newVideo.save()
+            res.status(200).json(saveVideo)
+          } catch (err) {
+            next(Error(409,"video was not created"));
+          }
   },
 
   updateVideo: async (req, res, next) => {
