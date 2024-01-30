@@ -9,9 +9,9 @@ const UserSchema = new mongoose.Schema({
     
     image: { type: String,},
     
-    subcribers:{type:Number,default:0 },
+    subscribers:{type:Number,default:0 },
 
-    subcribedUsers:{type:[String] },
+    subscribedUsers:{type:[String] },
   })
     {timestamps: true}
 

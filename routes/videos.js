@@ -10,9 +10,9 @@ const authenticateUser = require('../middleware/verifyToken.js').verifyToken
 
 router.post('/',videoController.addVideo,authenticateUser)
 
-router.put('/:id',videoController.updateVideo)
+router.put('/:id',videoController.updateVideo,authenticateUser)
 
-router.delete('/:id',videoController.deleteVideo)
+router.delete('/:id',videoController.deleteVideo,authenticateUser)
 
 router.get('/find/:id',videoController.getVideo)
 
@@ -22,7 +22,7 @@ router.get('/trend',videoController.trend)
 
 router.get('/random',videoController.random)
 
-router.put('/sub',videoController.sub)
+router.get('/sub',videoController.sub)
 
 
 

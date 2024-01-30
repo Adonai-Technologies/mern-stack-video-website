@@ -40,14 +40,15 @@ deleteUser: async (req, res, next) => {
 
   subscribe: async (req, res, next) => {
     try {
+     
       await User.findByIdAndUpdate(req.user,{
-         $push:{subcribedUsers:req.params._id},
-         
-        })
-         await User.findByIdAndUpdate(req.params._id,{
-             $inc:{subcribers: 1}
+         $push:{subscribedUsers: req.params.id},
          })
-         res.status(200).json('Subcribtion successfull')
+         
+         await User.findByIdAndUpdate(req.params.id,{
+             $inc:{subscribers: 1}
+         })
+         res.status(200).json('Subscribtion successfull')
         } catch (error) {
      next()
     }
@@ -56,13 +57,13 @@ deleteUser: async (req, res, next) => {
   unsubscribe:async (req, res, next) => {
     try {
       await User.findByIdAndUpdate(req.user,{
-        $pull:{subcribedUsers:req.params._id},
+        $pull:{subscribedUsers:req.params._id},
         
        })
         await User.findByIdAndUpdate(req.params._id,{
-            $inc:{subcribers: -1}
+            $inc:{subscribers: -1}
         })
-        res.status(200).json('UnSubcribtion successfull')
+        res.status(200).json('Unsubscribtion successfull')
     
     } catch (error) {
      next()
