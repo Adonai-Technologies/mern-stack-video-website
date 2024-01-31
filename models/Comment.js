@@ -5,7 +5,7 @@ const CommentSchema = new mongoose.Schema({
     
     videoId: {type: String,required: true},
     
-    describtion: {type: String,required: true},
+    description: {type: String,required: true},
     
   })
   {timestamps: true}

@@ -22,7 +22,11 @@ router.get('/trend',videoController.trend)
 
 router.get('/random',videoController.random)
 
-router.get('/sub',videoController.sub)
+router.get('/sub',videoController.sub,authenticateUser)
+
+router.get('/tags',videoController.getBytag)
+
+router.get('/search',videoController.search)
 
 
 
