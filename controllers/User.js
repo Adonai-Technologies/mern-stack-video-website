@@ -1,5 +1,6 @@
 const Error = require("../middleware/error.js").createError;
 const User = require("../models/User.js");
+const Video = require("../models/Video.js");
 
 module.exports = {
   update: async (req, res, next) => {
@@ -72,8 +73,14 @@ deleteUser: async (req, res, next) => {
 
  
   like: async(req, res, next) => {
+    const id = req.user
+    const videoIdid = req.user
     try {
-      
+      await Video.findByIdAndUpdate(videoId,{
+        $addToSet:{likes:id},
+        $pull:{dislikes:id}
+      })
+      res.status(200).json('The video has been liked')
     } catch (error) {
      next()
     }
@@ -82,10 +89,16 @@ deleteUser: async (req, res, next) => {
   
   
   dislike:async (req, res, next) => {
+    const id = req.user
+    const videoId = req.params
     try {
-      
+      await Video.findByIdAndUpdate(videoId,{
+        $addToSet:{dislikeslikes:id},
+        $pull:{likes:id}
+      })
+      res.status(200).json('The video has been liked')
     } catch (error) {
      next()
     }
-  }
-};
+},
+}

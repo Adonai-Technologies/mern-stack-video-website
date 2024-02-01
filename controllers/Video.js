@@ -50,7 +50,7 @@ module.exports = {
 
   getVideo: async (req, res, next) => {
     try {
-      const video = await Video.findById(req.params._id);
+      const video = await Video.findById(req.params.id);
       res.status(200).json(video);
     } catch (error) {
       next(Error(409, "video was not created"));
@@ -70,11 +70,14 @@ module.exports = {
 
   random: async (req, res, next) => {
     try {
-      const videos = await Video.aggregate([{ sample: { size: 1 } }]);
-      console.log(videos);
+      const videos = await Video.aggregate([
+        // Sample one random document from the collection
+        { $sample: { size: 3 } }
+      ]);
+      
       res.status(200).json(videos);
     } catch (error) {
-      next(Error(404, "video was not FOUND"));
+      next(Error(404, "random videos not found"));
     }
   },
 
