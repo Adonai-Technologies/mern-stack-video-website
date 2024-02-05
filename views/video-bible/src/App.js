@@ -1,7 +1,8 @@
 import styled, { ThemeProvider } from 'styled-components';
 import Navbar from'./components/Navbar.jsx'
 import Menu from './components/menu.jsx'
-import { darkTheme, lightTheme } from './utils/Theme.js';
+
+
 
 const Container = styled.div`
   display:flex;
@@ -14,9 +15,11 @@ const Main = styled.div`
 
 const Wrapper = styled.div``;
 function App() {
+
+  
   return (
 
-   <ThemeProvider theme={lightTheme}>
+  //  <ThemeProvider>
     <Container>
       <Menu/>
       
@@ -75,7 +78,7 @@ function App() {
           </Wrapper>
       </Main>
     </Container>
-    </ThemeProvider>
+   
   );
 }
 

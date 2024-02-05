@@ -20,9 +20,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Container = styled.div`
   flex: 1;
-  background-color: ${({theme}) => theme.bg}
+  background-color: #202020
   height: 100vh;
-  color: ${({theme}) => theme.text};
+  color: #181818
   font-size: 14px;
   position: sticky;
   top:0;
@@ -53,7 +53,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
 margin: 15px 0px;
-border: 0.5px solid ${({theme}) => theme.soft};
+border: 0.5px solid #3737373
 `;
 
 const Login = styled.div`
