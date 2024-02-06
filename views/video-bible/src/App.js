@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import Navbar from'./components/Navbar.jsx'
 import Menu from './components/menu.jsx'
 
@@ -18,9 +18,8 @@ function App() {
 
   
   return (
-
-  //  <ThemeProvider>
-    <Container>
+      
+<Container>
       <Menu/>
       
       <Main>

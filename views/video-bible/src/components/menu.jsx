@@ -38,6 +38,7 @@ const Logo = styled.div`
   gap: 5px;
   font-weight: bold;
   margin-bottom: 25px;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
@@ -73,7 +74,12 @@ align-items:center;
 gap:5px;
 `;
 
-
+const Title =styled.h3`
+   fonti-size: 14px;
+   font-weight: 500;
+   color: #aaaaaa
+   margin-bottom:20px;
+`
 
 const Menu = () => {
   return (
@@ -109,7 +115,11 @@ const Menu = () => {
      <Login>
       Sign in to like videos,comment, and subscribe
       </Login>
-      <Button><AccountCircleIcon/>SIGN IN</Button>
+      <Button><AccountCircleIcon/>
+      SIGN IN
+      </Button>
+      
+      <Title>Prophet Francis Kwateng</Title>
         <Item>
             <LibraryMusicIcon/>
             Music
