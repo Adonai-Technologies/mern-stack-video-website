@@ -1,83 +1,45 @@
-import styled from 'styled-components';
-import Navbar from'./components/Navbar.jsx'
-import Menu from './components/menu.jsx'
+/* eslint-disable react/jsx-no-undef */
+import styled from "styled-components";
+import Navbar from "./components/Navbar.jsx";
+import Menu from "./components/menu.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home  from "./pages/Home.jsx";
+import Video  from "./pages/Video.jsx";
 
 
-
-const Container = styled.div`
-  display:flex;
-`;
+const Container = styled.div`display: flex;`;
 
 const Main = styled.div`
-  flex:7;
-  background-color:#181818
+  flex: 7;
+  background-color: white;
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+    padding: 22px 96px;
+`;
+
+
+
 function App() {
-
-  
   return (
-      
-<Container>
-      <Menu/>
-      
-      <Main>
-        <Navbar>
+    <Container>
+      <BrowserRouter>
+        <Menu />
 
-        </Navbar>
-        
-        <Wrapper>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
-           <h1>test</h1>
+        <Main>
+          <Navbar />
+          <Wrapper>
+            <Routes>
+              <Route path="/">
+                  <Route index element={<Home/>}/>
+                  <Route path="video"/>
+                  <Route path=":id" element ={<Video/>} />
+                  </Route>
+            </Routes>
           </Wrapper>
-      </Main>
+        </Main>
+      </BrowserRouter>
     </Container>
-   
   );
 }
 

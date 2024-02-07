@@ -17,6 +17,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import QuizIcon from '@mui/icons-material/Quiz';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -85,10 +86,12 @@ const Menu = () => {
   return (
     <Container>
       <Wrapper>
+      <Link to='/' style={{textDecoration:"none", color:"inherit"}}>
         <Logo>
           <Img src={videoBible} />
           VideoBible
         </Logo>
+        </Link>
         <Item>
             <HomeIcon/>
             Home
