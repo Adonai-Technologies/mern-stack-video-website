@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Prophet  from "../img/prof2.png";
 import Prophet2 from '../img/prof.png'
 import { Link } from 'react-router-dom';
-import Video from '../pages/Video.jsx';
+
 
 
 const Container = styled.div`
@@ -60,8 +60,8 @@ const Info = styled.div`
 
 const Cards = () => {
   return (
-    
-    <Link to='/video' style={{textDecoration:"none"}}>
+
+    <Link to='/video/test' style={{textDecoration:"none"}}>
     <Container><Image src={Prophet}/>
         <Details>
           <ChannelImage src={Prophet2}/>

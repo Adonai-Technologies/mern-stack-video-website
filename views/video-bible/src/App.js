@@ -33,7 +33,7 @@ function App() {
               <Route path="/">
                   <Route index element={<Home/>}/>
                   <Route path="video"/>
-                  <Route path=":id" element ={<Video/>} />
+                  <Route path=":id" element={<Video/>} />
                   </Route>
             </Routes>
           </Wrapper>
